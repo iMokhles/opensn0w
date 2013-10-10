@@ -36,7 +36,7 @@ extern "C" {
 #undef interface
 #endif
 
-#ifndef __APPLE__
+#ifdef __APPLE__
 #include <CoreFoundation/CoreFoundation.h>
 #include <IOKit/IOKitLib.h>
 #include <IOKit/usb/IOUSBLib.h>
@@ -156,7 +156,7 @@ typedef struct __apple_usb_context {
 		int alt_interface;
 		unsigned short mode;
 		char serial[256];
-#ifndef __APPLE__
+#ifdef __APPLE__
         __apple_usb_context handle;
 #elif !defined(WIN32)
 		libusb_device_handle *handle;

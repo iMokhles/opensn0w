@@ -23,6 +23,8 @@
 
 #include <config.h>
 
+#include <poll.h>
+#include <pthread.h>
 #include <stddef.h>
 #include <stdint.h>
 #include <time.h>
@@ -197,6 +199,9 @@ static inline void usbi_dbg(const char *format, ...)
 #elif defined(OS_WINDOWS)
 #include <os/poll_windows.h>
 #endif
+
+#define usbi_mutex_t pthread_mutex_t
+#define usbi_cond_t pthread_cond_t
 
 extern struct libusb_context *usbi_default_context;
 
